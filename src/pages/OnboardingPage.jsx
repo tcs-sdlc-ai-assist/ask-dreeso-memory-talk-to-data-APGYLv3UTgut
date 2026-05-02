@@ -10,15 +10,15 @@
 
 import React, { useCallback, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { useNavigation } from '../../context/NavigationContext';
-import GlassCard from '../../components/ui/GlassCard';
-import GradientBackground from '../../components/ui/GradientBackground';
-import AnimatedTransition from '../../components/ui/AnimatedTransition';
-import { SCREEN_IDS, INTELLIGENCE_CLUSTERS, SYSTEMS } from '../../constants';
-import { getScreenPath } from '../../config/screenConfig';
-import { getAccessibleClusters, getPrimaryClusters, getConnectedSystems } from '../../data/personaData';
-import { logEvent, AUDIT_EVENT_TYPES } from '../../services/AuditLogger';
+import { useAuth } from '../context/AuthContext';
+import { useNavigation } from '../context/NavigationContext';
+import GlassCard from '../components/ui/GlassCard';
+import GradientBackground from '../components/ui/GradientBackground';
+import AnimatedTransition from '../components/ui/AnimatedTransition';
+import { SCREEN_IDS, INTELLIGENCE_CLUSTERS, SYSTEMS } from '../constants';
+import { getScreenPath } from '../config/screenConfig';
+import { getAccessibleClusters, getPrimaryClusters, getConnectedSystems } from '../data/personaData';
+import { logEvent, AUDIT_EVENT_TYPES } from '../services/AuditLogger';
 
 /**
  * Animation stagger delay in milliseconds between each section.
