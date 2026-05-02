@@ -12,6 +12,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { NavigationProvider } from '../../context/NavigationContext';
+import { QueryProvider } from '../../context/QueryContext';
 import { getScreenPath } from '../../config/screenConfig';
 import { SCREEN_IDS } from '../../constants';
 
@@ -47,8 +49,13 @@ function ProtectedRoute({ children }) {
     );
   }
 
-  // If authenticated, render children or the Outlet for nested routes
-  return children ? children : <Outlet />;
+  // If authenticated, render nested routes inside navigation + query providers
+  // (requires React Router + UIStateProvider ancestors)
+  return (
+    <NavigationProvider>
+      <QueryProvider>{children ? children : <Outlet />}</QueryProvider>
+    </NavigationProvider>
+  );
 }
 
 ProtectedRoute.propTypes = {

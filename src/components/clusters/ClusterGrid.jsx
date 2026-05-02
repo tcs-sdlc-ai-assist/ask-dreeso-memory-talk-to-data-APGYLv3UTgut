@@ -14,7 +14,11 @@ import IntelligenceClusterCard from './IntelligenceClusterCard';
 import AnimatedTransition from '../ui/AnimatedTransition';
 import { useAuth } from '../../context/AuthContext';
 import { INTELLIGENCE_CLUSTERS } from '../../constants';
-import { getAccessibleClusters, getPrimaryClusters } from '../../data/personaData';
+import {
+  getAccessibleClusters,
+  getPrimaryClusters,
+  getClusterAccess,
+} from '../../data/personaData';
 
 /**
  * Animation stagger delay in milliseconds between each cluster card.
@@ -115,8 +119,7 @@ function ClusterGrid({
       return [];
     }
 
-    // getAccessibleClusters only returns full/read, so we need to build the full list
-    const { getClusterAccess } = require('../../data/personaData');
+    // getAccessibleClusters only returns full/read, so we need the full list
     return getClusterAccess(persona);
   }, [persona]);
 
